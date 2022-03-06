@@ -1,0 +1,490 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    max-width: 1920px;
+    width: 100%;
+    background-color: #202024;
+    overflow-x: hidden;
+}
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1920px;
+    width: 100%;
+    background-image: url('../img/blik.png');  
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#fromRomania {
+    max-width: 1440px;
+    width: 100%;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    padding-top: 36px;
+    padding-bottom: 19.5px;
+    margin-bottom: 11.8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+#percentage {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 41.6px;
+}
+#question {
+    max-width: 500px;
+    width: 100%;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #F6C866;
+    margin-bottom: 40px;
+}
+button {
+    position: relative;
+    overflow-x: hidden;
+    width: 315.95px;
+    height: 69.44px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    margin-bottom: 34.72px;
+    background-color: #E8A035;
+    color: #ffffff;
+    border-radius: 70px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 23px;
+    cursor: pointer;
+    
+}
+button .flare {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 45px;
+    transform: skewX(-45deg);
+    animation: flareAnimation;
+    left: -150%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    animation: flareAnimation 5s infinite linear;
+}
+@keyframes flareAnimation {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+#online {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 70px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 1920px;
+    width: 100%;
+    background-image: url(../img/sky.png);
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 100%;
+    margin-bottom: 133px;
+}
+#sunImg {
+    position: absolute;
+    left: 50% - calc(width/2);
+    top: -35px;
+    opacity: 0;
+}
+#letUsHelp {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 442.68px;
+    width: 100%;
+    padding: 128px 45px 83px 32px;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    margin-bottom: 370px;
+    opacity: 0;
+}
+#trustUs {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 380px;
+    width: 100%;
+    margin-bottom: 190px;
+    opacity: 0;
+}
+.yellow {
+    color: #F6C866;
+}
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-width: 1920px;
+    width: 100%;
+}
+#fearOfDeath {
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 29px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #F6C866;
+    margin-bottom: 47px;
+}
+.questionNum {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+}
+#quote {
+    font-family: 'Bad Script', cursive;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #FFFFFF;
+    max-width: 407px;
+    width: 100%;
+}
+.ageQuote {
+    font-family: 'Bad Script', cursive;
+    position: relative;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #202024;
+    max-width: 411px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 6px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    animation-name: movingBox;
+    animation-duration: 3000ms;
+}
+#submitPage {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-style: normal !important;
+    margin-bottom: 34px;
+}
+#youCanLearn {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 35px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+#apiData {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 35px;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+}
+#quoteBack {
+    position: absolute;
+    right: 20px;
+    bottom: -20px;
+}
+.animation {
+    animation-name: movingBox;
+    animation-duration: 4000ms;
+}
+@keyframes movingBox {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+#rune1 {
+    margin: 106px 0px 80px 0px;
+}
+#rune2 {
+    margin: 80px 0px 152px 0px;
+}
+#latinText, #latinTextHidden {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9D9D9D;
+    max-width: 500px;
+}
+#latinTextHidden {
+    opacity: 0;
+}
+#eye {
+    position: absolute;
+    bottom: 360px;
+    right: 150px;
+    transform: rotate(-9.61deg);
+    z-index: 0;
+}
+#moon {
+    position: absolute;
+    bottom: 48px;
+    left: 150px;
+    z-index: 0;
+}
+section {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 1920px;
+    width: 100%;
+    padding: 45px 0px 35px 0px;
+}
+#firstQuestion {
+    position: relative;
+}
+#line {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 37px 0px 74px 0px;
+}
+.questionNumTwo {
+    margin-top: 183px;
+}
+#eye {
+    position: absolute;
+    top: 125px;
+    right: 20%;
+    transform: rotate(-9.61deg);
+}
+#moon {
+    position: absolute;
+    bottom: 85px;
+    left: 20%;
+}
+form {
+    max-width: 1920px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.select { 
+    display: block;
+    max-width: 300px; 
+    width: 100%;
+    height: 70px;
+    border-radius: 40px;
+    appearance: none;
+    text-align: center;
+    background-color: #cccccc; 
+    background-image: url('../img/pointer.svg'); 
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #202024; 
+    margin-bottom: 35px;
+}
+#third p {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 30px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+}
+#mic img {
+    margin-bottom: 39px;
+}
+#progressBar {
+    position: relative;
+    width: 259px;
+    height: 4px;
+    margin-bottom: 24px;
+    background: #F6C866;
+    border-radius: 5px;
+}
+#progressBarFill {
+    position: absolute;
+    right: 0px;
+    width: 259px;
+    height: 4px;
+    background-color: #FFFFFF;
+}
+#percents {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 12px;
+}
+#mic p {
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.6);
+}
+#submit {
+    height: 100vw;
+}
+#firstEvent {
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    color: #F6C866;
+    padding: 64px 50px 38px 50px;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    margin-bottom: 27px;
+    max-width: 480px;
+}
+#submit button {
+    background-color: #33AD48;
+    max-width: 400px;
+    width: 100%;
+    height: 70px;
+    margin-top: 34px;
+}
+#apiData {
+    max-width: 450px;
+    width: 100%;
+    color: #ffffff;
+}
+@media (max-width: 800px) {
+    header {
+        background-position-x: 65%
+    }
+    main {
+        background-position-x: 35%
+    }
+    #circleImg {
+        max-width: 225px;
+    }
+    #fromRomania, #online, #questionNum {
+        font-size: 12px;
+        line-height: 14px;
+    }
+    #percentage {
+        font-size: 20px;
+        line-height: 23px;
+    }
+    #question, #letUsHelp, #trustUs {
+        font-size: 16px;
+        line-height: 25px;
+    }
+    #fearOfDeath {
+        font-size: 16px;
+        line-height: 19px;
+    }
+    #latinText, #latinTextHidden {
+        font-size: 7px;
+        line-height: 9px;
+    }
+    .ageQuote {
+        font-size: 14px;
+        line-height: 20px;
+        max-width: 260px;
+    }
+    #firstEvent {
+        font-size: 16px;
+        line-height: 25px;
+        max-width: 260px;
+        padding: 10px;
+        margin: 20px 30px;
+    }
+    #question {
+        max-width: 300px;
+    }
+    #quote {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    #youCanLearn, #apiData {
+        font-size: 14px;
+        line-height: 16px;
+        max-width: 250px;
+    }
+    #latinText {
+        display: block;
+    }
+    #letUsHelp {
+        max-width: 255px;
+        padding: 58px 19px 32px 26px;
+    }
+    button {
+        max-width: 185px;
+        font-size: 14px;
+        line-height: 16px;
+    }
+    #submit button {
+        max-width: 260px;
+    }
+    #rune1 {
+        max-width: 32px;
+        margin: 61px 0px 37px 0px;
+    }
+    #rune2 {
+        max-width: 32px;
+        margin: 33px 0px 70px 0px;
+    }
+    #sunImg {
+        max-width: 78px;
+    }
+}
