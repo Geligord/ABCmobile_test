@@ -141,7 +141,7 @@ function question2() {
                 '<p><strong>ПЕРВОЕ ЗНАЧИМОЕ СОБЫТИЕ МОЖЕТ ПРОИЗОЙТИ УЖЕ 0 ' + tomorrow.getDate()+'.'+tomorrow.getMonth()+'.'+tomorrow.getFullYear() +'</strong>, Вам надо быть готовым, что бы последствия не оказались необратимыми.</p>'
             }
             },
-        1000);
+        2000);
         // "Загрузка" - 2 секугды, переход к следующему вопросу,
         // затем расчет завтрашней даты и показ её пользователю
     }
@@ -154,7 +154,7 @@ function question3() {
 // Следующий вопрос
 
 let i = 259
-let audioTime = 1000
+let audioTime = 13000
 function question4() {
     fiveQuestion.style.display = 'none';
     document.getElementById('mic').style.display = 'flex';
