@@ -11,38 +11,46 @@ const firstEvent = document.getElementById("firstEvent")
 let birthDays = false
 let birthMonths = false
 let birthYears = false
-let birthDate, age
+let birthDate, age, ages, months, days, u, questionNum = 1, sectionNum, buttonsNum, buttonsCreated, checkOne = true, checkTwo = true
 // Объявление некоторых переменных
 
-let timeToWait = 3000;
-function animationFirst() {
-    document.getElementById('online').scrollIntoView({behavior: 'smooth'});
-    document.getElementById('sunImg').classList.add("animation");
-    document.getElementById('letUsHelp').classList.add("animation");
+let questionNumList = document.querySelectorAll('.questionNum');
+for (let el of questionNumList) {
+     el.innerHTML = 'Вопрос ' + questionNum  + '-' + questionNumList.length
+     questionNum++
 }
-function animationSecond() {
-    document.getElementById('trustUs').scrollIntoView({behavior: 'smooth'});
-    document.getElementById('trustUs').classList.add("animation");
-}
-function animationSecond() {
-    document.getElementById('trustUs').scrollIntoView({behavior: 'smooth'});
-    document.getElementById('trustUs').classList.add("animation");
-}
-function animationThird() {
-    document.getElementById('trustUs').scrollIntoView({behavior: 'smooth'});
-    document.getElementById('trustUs').classList.add("animation");
-}
-setTimeout(function(){ 
-    animationFirst();
-    document.getElementById('sunImg').style.opacity = '1';
-    document.getElementById('letUsHelp').style.opacity = '1';
-    setTimeout(function(){ 
-        animationSecond();
-        document.getElementById('trustUs').style.opacity = '1';
-        }, timeToWait);
-    }, timeToWait);
 
+let questionsArray = [[['Боитесь ли вы умереть?'], ['Да', 'Нет']], [['Мы расскажем Вам не только подробности вашей смерти, но также поможем Вам избежать этой ужасной даты и продлить вашу жизнь на многие годы.', 'Когда вы чувствуете себя <br> наиболее комфортно?'], ['Утро', 'День', 'Вечер', 'Ночь']], 
+                    [['Уже совсем скоро Вы узнаете много интересного о своем будущем!', 'Укажите свою дату рождения:'], ['Далее']], 
+                    [['Смерть родного человека – одно из тяжелейших испытаний в жизни каждого из нас!', 'Снятся ли Вам умершие люди?'], ['Да', 'Нет', 'Наверное']], 
+                    [['По вам скучает очень близкий человек, которого больше нет в мире живых.', 'Запись, которую Вы услышите, может шокировать людей с неокрепшей психикой. Вы готовы узнать, что ждет именно Вас?'], ['Да', 'Затрудняюсь ответить']]]
+                    // Массив с вопросами и ответами
+let text = '<p id="fearOfDeath">' + questionsArray[0][0] + '</p><button onclick="questions()">' + questionsArray[0][1][0] + 
+'<span class="flare"></span></button><button onclick="questions()">' + questionsArray[0][1][0] + '<span class="flare"></span></button>'
+document.getElementById('footer').innerHTML = text + document.getElementById('footer').innerHTML
+questionsArray.shift()
+// Добавление первого вопроса вынесено из цикла
 
+let sectionList = document.querySelectorAll('.addQuestionJS') // [addjs, addjs, addjs, addjs]
+for (sectionNum = 0; sectionNum <= sectionList.length - 1; sectionNum++) {
+    checkOne = true
+    buttonsCreated = 0
+    if (sectionNum === 3) {
+        sectionList[sectionNum].innerHTML += '<p class="ageQuote" id="ageQuote pensioner">' + questionsArray[3][0][0] + '<img id="quoteBack" src="./img/messageIcon.svg" alt=""> </p><div id="line"><img id="eye" src="./img/eye.png" alt=""><img id="moon" src="./img/moon.png" alt=""></div></div><p id="question">' + questionsArray[sectionNum][0][1] + '</p>'
+    }
+    else {
+        sectionList[sectionNum].innerHTML += '<p id="quote">' + questionsArray[sectionNum][0][0] + '</p><div id="line"><img id="eye" src="./img/eye.png" alt=""><img id="moon" src="./img/moon.png" alt=""></div><p id="question">' + questionsArray[sectionNum][0][1] + '</p>'
+    }
+    if (sectionNum === 1) {
+        sectionList[sectionNum].innerHTML += '<select class="select" id="birthDay"><option>День</option> </select><select class="select" id="birthMonth"> <option>Месяц</option> </select><select class="select" id="birthYear"> <option>Год</option> </select><button onclick="question' + (sectionNum+1) + '()">' + questionsArray[sectionNum][1][buttonsCreated] + '<span class="flare"></span></button>'
+        checkOne = false
+    }
+    if (checkOne) {
+        for (buttonsNum = questionsArray[sectionNum][1].length; buttonsCreated < buttonsNum; buttonsCreated++) {
+            sectionList[sectionNum].innerHTML += '<button onclick="question' + (sectionNum+1) + '()">' + questionsArray[sectionNum][1][buttonsCreated] + '<span class="flare"></span></button>'
+        }
+    }
+}
 function questions() {
     header.style.display = 'none';
     main.style.display = 'none';
@@ -51,11 +59,28 @@ function questions() {
 }
 // Скрытие главной страницы и переход к вопросам
 
-function questionTwo() {
+function question1() {
     firstQuestion.style.display = 'none';
     secondQuestion.style.display = 'flex';
 }
 // Следующий вопрос
+
+for (ages = 0; ages <= 80; ages++)
+    {
+        document.getElementById('birthYear').innerHTML +=
+        "<option>" + (2022 - 18 - ages) + "</option>"
+    }
+for (months = 1; months <= 12; months++)
+    {
+        document.getElementById('birthMonth').innerHTML +=
+        "<option>" + months + "</option>"
+    }
+for (days = 1; days <= 31; days++)
+    {
+        document.getElementById('birthDay').innerHTML +=
+        "<option>" + days + "</option>"
+    }
+//Заполнение дней, месяцев, лет на странице с считыванием даты рождения пользователя
 
 document.getElementById('birthDay').addEventListener('change', function() {
     birthDays = this.value;
@@ -68,7 +93,7 @@ document.getElementById('birthYear').addEventListener('change', function() {
   })
 // Считывание даты рождения пользователя
 
-function questionThree() {
+function question2() {
     if (birthDays === false || birthDays === 'День') {
         document.getElementById("birthDay").style.border='2px red solid'
     }
@@ -86,11 +111,12 @@ function questionThree() {
         birthDate = Date.parse(birthYears + '-' + birthMonths + '-' + birthDays)
         age = (Date.now() - birthDate) / 31557600000
         // Расчет возраста пользователя
+        let pensioner = document.getElementsByClassName('ageQuote')[0]
         if (age > 46) {
-            ageQuote.textContent += 'Возможно это кто-то из Ваших родителей.'
+            pensioner.textContent += 'Возможно это дедушка или бабушка.'
         }
         else if (age > 35 && age <= 46) {
-            ageQuote.textContent += 'Возможно это дедушка или бабушка.'
+            pensioner.textContent += 'Возможно это кто-то из Ваших родителей.'
         }
         // Показ необходимой информации в зависимости от возраста пользователя
         setTimeout(function() {
@@ -98,24 +124,38 @@ function questionThree() {
             fourthQuestion.style.display = 'flex';
             let today = new Date()
             let tomorrow = new Date(today.getTime() + (24 * 60 * 60 * 1000));
-            firstEvent.textContent += 
-            'ПЕРВОЕ ЗНАЧИМОЕ СОБЫТИЕ МОЖЕТ ПРОИЗОЙТИ УЖЕ ' + tomorrow.getDate()+'.'+tomorrow.getMonth()+'.'+tomorrow.getFullYear() +', Вам надо быть готовым, что бы последствия не оказались необратимыми.'
+            if (tomorrow.getDate() < 10 && tomorrow.getMonth() < 10) {
+                firstEvent.innerHTML += 
+                '<p><strong>ПЕРВОЕ ЗНАЧИМОЕ СОБЫТИЕ МОЖЕТ ПРОИЗОЙТИ УЖЕ 0' + tomorrow.getDate()+'.0'+tomorrow.getMonth()+'.'+tomorrow.getFullYear() +'</strong>, Вам надо быть готовым, что бы последствия не оказались необратимыми.</p>'
+            }
+            else if (tomorrow.getMonth() < 10) {
+                firstEvent.textContent += 
+                '<p><strong>ПЕРВОЕ ЗНАЧИМОЕ СОБЫТИЕ МОЖЕТ ПРОИЗОЙТИ УЖЕ 0 ' + tomorrow.getDate()+'.0'+tomorrow.getMonth()+'.'+tomorrow.getFullYear() +'</strong>, Вам надо быть готовым, что бы последствия не оказались необратимыми.</p>'
+            }
+            else if (tomorrow.getDate() < 10) {
+                firstEvent.textContent += 
+                '<p><strong>ПЕРВОЕ ЗНАЧИМОЕ СОБЫТИЕ МОЖЕТ ПРОИЗОЙТИ УЖЕ 0' + tomorrow.getDate()+'.'+tomorrow.getMonth()+'.'+tomorrow.getFullYear() +'</strong>, Вам надо быть готовым, что бы последствия не оказались необратимыми.</p>'
+            }
+            else {
+                firstEvent.textContent += 
+                '<p><strong>ПЕРВОЕ ЗНАЧИМОЕ СОБЫТИЕ МОЖЕТ ПРОИЗОЙТИ УЖЕ 0 ' + tomorrow.getDate()+'.'+tomorrow.getMonth()+'.'+tomorrow.getFullYear() +'</strong>, Вам надо быть готовым, что бы последствия не оказались необратимыми.</p>'
+            }
             },
-        2000);
+        1000);
         // "Загрузка" - 2 секугды, переход к следующему вопросу,
         // затем расчет завтрашней даты и показ её пользователю
     }
 }
 
-function questionFour() {
+function question3() {
     fourthQuestion.style.display = 'none';
     fiveQuestion.style.display = 'flex';
 }
 // Следующий вопрос
 
 let i = 259
-let audioTime = 13000
-function questionFive() {
+let audioTime = 1000
+function question4() {
     fiveQuestion.style.display = 'none';
     document.getElementById('mic').style.display = 'flex';
     document.getElementById('audioPlayer').play();
@@ -133,51 +173,89 @@ function questionFive() {
             document.getElementById('mic').style.display='none';
             document.getElementById('submit').style.display='flex';
             // Переход на последнюю страницу
-            window.addEventListener('scroll', function() {
-                if (window.pageYOffset + document.documentElement.clientHeight + 5 > 
-                    document.documentElement.offsetHeight && 
-                    window.pageYOffset+document.documentElement.clientHeight - 5 <
-                     document.documentElement.offsetHeight) {
-                        document.getElementById('latinTextHidden').style.opacity = '1'
-                     }
-                });
-            // Проявление второй части "футера" при скролле, когда одна его часть уже видна
         }
     }, audioTime / i);
 }
 
-
-
 let url, response, data, results, results2;
-    (async () => {
+   (async () => {
     url = 'https://swapi.dev/api/people/1/';
     response = await fetch(url);
     data = await response.json();
     results = JSON.stringify(data, undefined, 2);
 })()
-  // Запрос данных с API
+// Запрос данных с API
 
 function json() {
+    if (response.ok) {}
+    else {alert('Ошибка запроса данных с сервера!')}
     results2 = JSON.parse(results)
     let keys = Object.keys(results2)
     let values = Object.values(results2)
-    document.getElementById('apiData').innerHTML =
-     keys[0] + ': ' + values[0] + ';' + '<br>' + 
-     keys[1] + ': ' + values[1] + ';' + '<br>'+ 
-     keys[2] + ': ' + values[2] + ';' + '<br>' + 
-     keys[3] + ': ' + values[3] + ';' + '<br>' + 
-     keys[4] + ': ' + values[4] + ';' + '<br>' + 
-     keys[5] + ': ' + values[5] + ';' + '<br>' +  
-     keys[6] + ': ' + values[6] + ';' + '<br>' + 
-     keys[7] + ': ' + values[7] + ';' + '<br>' + 
-     keys[8] + ': ' + values[8] + ';' + '<br>' + 
-     keys[9] + ': ' + values[9] + ';' + '<br>' + 
-     keys[10] + ': ' + values[10] + ';' + '<br>' + 
-     keys[11] + ': ' + values[11] + ';' + '<br>' + 
-     keys[12] + ': ' + values[12] + ';' + '<br>' + 
-     keys[13] + ': ' + values[13] + ';' + '<br>' + 
-     keys[14] + ': ' + values[14] + ';';
-    document.getElementById('call').style.display = 'none'
+    for (let jsonValues = 0; jsonValues <= keys.length; jsonValues++) {
+        document.getElementById('apiData').innerHTML +=
+        keys[jsonValues] + ': ' + values[jsonValues] + ';<br>'
+    }
     // Корректное, оформленное отображение данных в виде, понятном для пользователя
     // а не в "сыром" JSON
+    document.getElementById('call').style.display = 'none'
+    document.getElementById('latinTextHidden').innerHTML += 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum maiores sapiente at debitis cumque ad voluptatem.'
+    window.scrollTo(0, document.body.clientHeight - window.innerHeight - 100)
+    //
 }
+
+
+
+let timerIdOne, timerIdTwo, idOne = true, idTwo = true
+if (idOne && document.body.clientWidth > 1280) {
+    timerIdOne = setInterval(() => {
+        window.scrollBy(0, 30)
+    }, 100);
+    setTimeout(() => {
+        document.getElementById('sunImg').classList.add('scrolled')
+        document.getElementById('letUsHelp').classList.add('scrolled')
+    }, 2000);
+    setTimeout(() => {
+        clearInterval(timerIdOne);
+        idOne = false
+        if (idOne != true) {
+            setTimeout(() => {
+                document.getElementById('trustUs').classList.add('scrolled')
+                timerIdTwo = setInterval(() => {
+                    window.scrollBy(0, 30)
+                }, 100);
+            }, 3000);
+            setTimeout(() => {
+                clearInterval(timerIdTwo);
+                idTwo = false
+            }, 6000);
+        }
+    }, 4250)}
+// Скролл на главной странице на десктопе
+
+if (idOne && document.body.clientWidth < 1280) {
+    timerIdOne = setInterval(() => {
+        window.scrollBy(0, 30)
+    }, 100);
+    setTimeout(() => {
+        document.getElementById('sunImg').classList.add('scrolled')
+        document.getElementById('letUsHelp').classList.add('scrolled')
+    }, 2000);
+    setTimeout(() => {
+        clearInterval(timerIdOne);
+        idOne = false
+        if (idOne != true) {
+            setTimeout(() => {
+                document.getElementById('trustUs').classList.add('scrolled')
+                timerIdTwo = setInterval(() => {
+                    window.scrollBy(0, 30)
+                }, 100);
+            }, 3000);
+            setTimeout(() => {
+                clearInterval(timerIdTwo);
+                idTwo = false
+            }, 5500);
+        }
+    }, 3000)
+}
+// Скролл на главной странице на мобильных устройствах и планшетах
