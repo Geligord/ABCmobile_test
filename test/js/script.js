@@ -204,25 +204,43 @@ function json() {
     //
 }
 
+if (document.getElementById('main').getBoundingClientRect().y < 400) {
+    document.getElementById('sunImg').classList.add('scrolled')
+    document.getElementById('letUsHelp').classList.add('scrolled')
+}
+if (document.getElementById('trustUs').getBoundingClientRect().y < 500) {
+    document.getElementById('trustUs').classList.add('scrolled')
+}
 
 
 let timerIdOne, timerIdTwo, idOne = true, idTwo = true
-if (idOne && document.body.clientWidth > 1280) {
+if (idOne && document.body.clientWidth >= 850) {
     timerIdOne = setInterval(() => {
         window.scrollBy(0, 30)
+        if (document.getElementById('main').getBoundingClientRect().y < 400) {
+            document.getElementById('sunImg').classList.add('scrolled')
+            document.getElementById('letUsHelp').classList.add('scrolled')
+        }
+        if (document.getElementById('trustUs').getBoundingClientRect().y < 500) {
+            document.getElementById('trustUs').classList.add('scrolled')
+        }
     }, 100);
     setTimeout(() => {
-        document.getElementById('sunImg').classList.add('scrolled')
-        document.getElementById('letUsHelp').classList.add('scrolled')
     }, 2000);
     setTimeout(() => {
         clearInterval(timerIdOne);
         idOne = false
         if (idOne != true) {
             setTimeout(() => {
-                document.getElementById('trustUs').classList.add('scrolled')
                 timerIdTwo = setInterval(() => {
                     window.scrollBy(0, 30)
+                    if (document.getElementById('main').getBoundingClientRect().y < 400) {
+                        document.getElementById('sunImg').classList.add('scrolled')
+                        document.getElementById('letUsHelp').classList.add('scrolled')
+                    }
+                    if (document.getElementById('trustUs').getBoundingClientRect().y < 500) {
+                        document.getElementById('trustUs').classList.add('scrolled')
+                    }
                 }, 100);
             }, 3000);
             setTimeout(() => {
@@ -233,20 +251,17 @@ if (idOne && document.body.clientWidth > 1280) {
     }, 4250)}
 // Скролл на главной странице на десктопе
 
-if (idOne && document.body.clientWidth < 1280) {
+if (idOne && document.body.clientWidth < 850) {
     timerIdOne = setInterval(() => {
         window.scrollBy(0, 30)
     }, 100);
     setTimeout(() => {
-        document.getElementById('sunImg').classList.add('scrolled')
-        document.getElementById('letUsHelp').classList.add('scrolled')
     }, 2000);
     setTimeout(() => {
         clearInterval(timerIdOne);
         idOne = false
         if (idOne != true) {
             setTimeout(() => {
-                document.getElementById('trustUs').classList.add('scrolled')
                 timerIdTwo = setInterval(() => {
                     window.scrollBy(0, 30)
                 }, 100);
@@ -258,4 +273,4 @@ if (idOne && document.body.clientWidth < 1280) {
         }
     }, 3000)
 }
-// Скролл на главной странице на мобильных устройствах и планшетах
+// Скролл на главной странице на мобильных устройствах
